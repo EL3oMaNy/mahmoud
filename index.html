@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎉 عيد ميلاد محمود 🎉</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Cairo', system-ui, -apple-system, sans-serif; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #ff8ad8, #6a5cff, #00d4ff);
+      background-size: 200% 200%;
+      animation: bg 8s ease infinite;
+      color: #fff;
+      overflow: hidden;
+    }
+    @keyframes bg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .card {
+      position: relative;
+      background: rgba(0,0,0,0.28);
+      backdrop-filter: blur(14px);
+      border-radius: 22px;
+      padding: 34px 26px 30px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+      animation: pop 0.8s ease;
+    }
+    @keyframes pop {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .badge {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      background: linear-gradient(135deg, #ffd86f, #ff9f00);
+      color: #000;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      transform: rotate(8deg);
+    }
+    h1 {
+      margin: 6px 0 8px;
+      font-size: 1.9rem;
+      letter-spacing: 0.5px;
+    }
+    .glow {
+      text-shadow: 0 0 10px rgba(255,255,255,0.6);
+    }
+    p {
+      margin: 0 0 22px;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+    button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 16px;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff6f91, #ffc75f);
+      color: #000;
+      font-weight: 700;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    }
+    button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+      filter: brightness(1.05);
+    }
+    .footer {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+    .confetti {
+      position: absolute;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <div class="badge">LEVEL 21</div>
+    <div id="ageCounter" style="font-size:0.85rem; opacity:0.9; margin-bottom:6px;">21 سنة • Level جديد اتفتح</div>
+    <div class="badge">LEVEL 21</div>
+    <h1 id="title" class="glow">🔥 محمود وصل 21 🔥</h1>
+    <p id="subtitle">قول اللي عمرك ما اتجرأت تقوله… محدش شايفك 👀</p>
+    <div id="rotating" style="font-size:0.9rem; opacity:0.85; margin-bottom:14px;"></div>
+    <div style="height:6px; background:rgba(255,255,255,0.25); border-radius:6px; overflow:hidden; margin-bottom:18px;">
+      <div id="fakeProgress" style="height:100%; width:0%; background:linear-gradient(90deg,#ffd86f,#ff6f91);"></div>
+    </div>
+
+    <a href="https://lehl2bsma4y.sarhne.com" target="_blank" style="text-decoration:none;">
+      <button>اكتب رسالة صراحة ✨</button>
+    </a>
+    <button onclick="escapeSite()" style="margin-top:10px; background:rgba(255,255,255,0.25); color:#fff; font-weight:500;">دخلت بالغلط؟ 😅</button>
+
+    <div class="footer">هقرا كل رسالة… حتى اللي توجع ❤️‍🩹</div>
+  </div>
+
+  <script>
+    const phrases = [
+      'محمود وصل 21… قول اللي في بالك 👀',
+      'محمود كمل 21… اللي في بالك اكتبه.',
+      '21 سنة مش رقم… رسالة منك تفرق.',
+      'Level 21 اتفتح… الصراحة مطلوبة 😈'
+    ];
+    let i = 0;
+    setInterval(() => {
+      document.getElementById('rotating').innerText = phrases[i % phrases.length];
+      i++;
+    }, 3000);
+
+    // Fake progress
+    let p = 0;
+    const prog = document.getElementById('fakeProgress');
+    setInterval(() => {
+      p = Math.min(100, p + Math.random() * 5);
+      prog.style.width = p + '%';
+    }, 400);
+
+    // Escape button
+    function escapeSite() {
+      window.location.href = 'https://www.google.com';
+    }
+
+    // Night mode auto
+    const hour = new Date().getHours();
+    if (hour >= 22 || hour < 6) {
+      document.body.style.background = 'linear-gradient(135deg,#0f2027,#203a43,#2c5364)';
+      document.getElementById('subtitle').innerText = 'محمود كمل 21… والصراحة بليل ليها طعم تاني 🌙';
+    }
+
+    // Confetti
+    function makeConfetti() {
+      const colors = ['#ff6f91','#ffc75f','#845ec2','#00d4ff','#ffd86f'];
+      for (let i = 0; i < 30; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = colors[Math.floor(Math.random()*colors.length)];
+        c.style.animationDuration = (3 + Math.random() * 3) + 's';
+        document.body.appendChild(c);
+      }
+    }
+    makeConfetti();
+  </script>
+</body>
+</html>
